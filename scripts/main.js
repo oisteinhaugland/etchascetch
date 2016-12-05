@@ -1,9 +1,34 @@
-$(document).ready(function(){
-var max = 240;
-for (i=0;i<max;i++){
-	$("#wrapper").html($("#wrapper").html() +"<div class='box'></div>");
+/*******************************
+FUNCTIONS
+******************************/
+var squaresPerRow = 10;
+function generateGrid(numSquares, option){
+	for(var i  = 0; i < numSquares * numSquares; i++)
+	{		
+		$("#grid").append("<div class='box'></div>");			
+	}
+
+	var width = ($("#grid").width())/ squaresPerRow;  
+	
+	$(".box").css({"width":width ,"height":width});	
+		
 };
 
+function updateGrid(){
+	$(".box").remove();
+
+	squaresPerRow = parseInt(prompt("Enter number of squares (1-64): ",50),10);
+	if (squaresPerRow > 0 && squaresPerRow <= 64)
+	{
+
+		generateGrid(squaresPerRow);	
+	}
+	else
+	{
+		alert("Sorry that was not a valid input.");
+	}	
+
+}
 
 function getRandomColor() {
     var letters = '0123456789ABCDEF';
@@ -15,16 +40,22 @@ function getRandomColor() {
     return color;
 }
 
-var startingColor = $(this).css("background", "white");
-$(".box").on('mouseenter', function(){
-	
-	if (startingColor){
-		$(this).css("background", getRandomColor());
 
-	}
-	else {
-		$(this).css("background","blue");
-	}
+
+/*******************************
+Document Ready
+******************************/
+
+$(document).ready(function(){
+generateGrid(squaresPerRow);
+
+
+$("#clear").on('click', function(){
+	updateGrid();
+ });
+
+$(".box").on('mouseenter', function(){
+		$(this).css("background", getRandomColor());
 	});
 
 }); //document ready end;
