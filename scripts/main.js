@@ -1,7 +1,7 @@
 /*******************************
 FUNCTIONS
 ******************************/
-var squaresPerRow = 10;
+var squaresPerRow = 5;
 function generateGrid(numSquares, option){
 	for(var i  = 0; i < numSquares * numSquares; i++)
 	{		
@@ -11,21 +11,23 @@ function generateGrid(numSquares, option){
 	var width = ($("#grid").width())/ squaresPerRow;  
 	
 	$(".box").css({"width":width ,"height":width});	
+	$(".box").on('mouseenter', function(){
+		$(this).css("background", getRandomColor());
+	});
 		
 };
 
 function updateGrid(){
 	$(".box").remove();
-
-	squaresPerRow = parseInt(prompt("Enter number of squares (1-64): ",50),10);
-	if (squaresPerRow > 0 && squaresPerRow <= 64)
+	squaresPerRow = parseInt(prompt("Enter number of squares (1-64): ",10),10);
+	if (squaresPerRow > 0 && squaresPerRow <= 64 && squaresPerRow)
 	{
-
 		generateGrid(squaresPerRow);	
 	}
 	else
 	{
-		alert("Sorry that was not a valid input.");
+		alert("That's not a valid input that was not a valid input.");
+		updateGrid();
 	}	
 
 }
@@ -54,9 +56,7 @@ $("#clear").on('click', function(){
 	updateGrid();
  });
 
-$(".box").on('mouseenter', function(){
-		$(this).css("background", getRandomColor());
-	});
+
 
 }); //document ready end;
 

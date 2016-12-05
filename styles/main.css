@@ -4,6 +4,10 @@ VARIABLES
 /**********************************
 GENERAL
 **********************************/
+button {
+  margin: 10px;
+  padding: 10px; }
+
 body {
   line-height: 0; }
 
