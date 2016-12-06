@@ -125,4 +125,24 @@ $("#clear").on('click', function(){
 
 
 }); //document ready end;
+/* better solution
+function moveIn() {
+    var r,b,g,rgbArray;
+    if($(this).css('background-color') == 'rgba(0, 0, 0, 0)') {
+        $(this).css("background-color", "rgb("+randInt(255)+", "+randInt(255)+", "+randInt(255)+")");
+    } else {
+         rgbArray = $(this).css('background-color').slice(4,$(this).css('background-color').length-1).split(',');
+         r = rgbArray[0];
+         g = rgbArray[1];
+         b = rgbArray[2];
+        $(this).css('background-color',"rgb("+Math.floor(r*0.90)+", "+Math.floor(g*0.90)+", "+Math.floor(b*0.90)+")");
+    }
+}
 
+
+
+function randInt(max) {
+       return Math.floor(Math.random()*max);
+}
+
+*/
